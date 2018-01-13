@@ -1,0 +1,27 @@
+{
+  "name": "ossdesignbin",
+  "version": "0.0.1",
+  "description": "All your open source design apps in one place.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdknight/ossdesignbin.git"
+  },
+  "author": "cdknight",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/cdknight/ossdesignbin/issues"
+  },
+  "homepage": "https://github.com/cdknight/ossdesignbin#readme",
+  "devDependencies": {
+    "electron": "^1.7.10"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "shelljs": "^0.8.0",
+    "sudo-prompt": "^8.1.0"
+  }
+}
