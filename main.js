@@ -3,11 +3,10 @@ const app = electron.app;
 const {ipcMain} = require('electron');
 const path = require('path');
 const url = require('url');
-const shell = require('shelljs')
 const BrowserWindow = electron.BrowserWindow;
 var dirname = "~/ossdesignbin_bin"
-shell.config.execPath = "/usr/bin/node"
-shell.exec("mkdir -p " + dirname);
+var exec = require('child_process').exec;
+ exec('mkdir -p ossdesignbin_bin')
 var mainWindow; 
 app.on('ready', function(){
     mainWindow = new BrowserWindow({width: 400, height:768, backgroundcolor:'#344598'})
@@ -21,7 +20,14 @@ app.on('ready', function(){
     ipcMain.on('send_msg', (event,arg) =>{
         console.log("User has requested an install of the following software: " + arg);
         if (arg == "darktable"){
-            shell.exec('bash install_scripts/darktable.sh')
+            exec('bash install_scripts/darktable.sh', function(error, stdout, stderr) {
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
+            if (error !== null) {
+                console.log('exec error: ' + error);
+            }
+        });
+
             event.sender.send("darktable_success", "done");
         }
     })
